@@ -1,8 +1,8 @@
-from math import sqrt
+rom math import sqrt
 import matplotlib.pyplot as plt
 import numpy as np 
 from mpl_toolkits.mplot3d import Axes3D
-
+​
 m=10
 class Vector:
     def __init__(self, x=0, y=0, z=0):
@@ -32,20 +32,20 @@ class Vector:
         return(Vector(self.x/m, self.y/m, self.z/m))
 # Creamos la figura
 fig = plt.figure()
-
+​
 # Agrrgamos un plano 3D
 ax1 = fig.add_subplot(111,projection='3d')
-
+​
 # Mostramos el gráfico
 plt.show()  
     
 #Bloque Principal
 #Vectores 
 Vector0=Vector()
-Vector1=Vector(-1, 2, 3)
+Vector1=Vector(1, 7, 7)
 Vector2=Vector(5, 2, -2)
 Vector3=Vector(2, 2, -2)
-
+​
 #Operaciones de Vectores
 Vector4=Vector1+Vector2
 Vector5 = Vector4+Vector3
@@ -75,16 +75,15 @@ print("V1xV2:", PCV1V2)
 print("Aceleracion",Vectoraceleracion  )
 print(type(Vectoraceleracion))
 r = np.array([cordenadax,cordenaday,cordenadaz])
-s = np.array([4,5,6])
-
-def trazado_vectores_3d(ax,vectores,**kwords):
+​
+def trazado_vectores_3d(ax,vectores,cordenadax,cordenaday,cordenadaz,**kwords):
     x_cor,y_cor,z_cor = zip(*vectores)
     ax.scatter(x_cor,y_cor,z_cor,**kwords)
     for v in vectores:
         x,y,z = v
-        ax.plot([x,x],[y,y],[0,z], color = "gray",linestyle="dotted",marker = ".")
+        ax.plot([0,cordenadax],[0,cordenaday],[0,cordenadaz], color = "gray",linestyle="dotted",marker = ".")
         
 subplot3d = plt.subplot(111,projection="3d")
-trazado_vectores_3d(subplot3d,[r,s], color = ["r","b"])
-subplot3d.set_zlim([0,8])
+trazado_vectores_3d(subplot3d,[r],cordenadax,cordenaday,cordenadaz,color=["r"])
+subplot3d.set_zlim([0,cordenadaz])
 plt.show()
